@@ -752,6 +752,8 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/gdb_arrow.py DESTINATION "${ARROW_GDB_
 # Validate and print out Arrow configuration options
 #
 
+add_subdirectory(src/ttt)
+
 validate_config()
 config_summary_message()
 if(${ARROW_BUILD_CONFIG_SUMMARY_JSON})

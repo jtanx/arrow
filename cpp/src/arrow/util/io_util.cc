@@ -1681,6 +1681,8 @@ Result<int64_t> FileRead(int fd, uint8_t* buffer, int64_t nbytes) {
 Result<int64_t> FileReadAt(int fd, uint8_t* buffer, int64_t position, int64_t nbytes) {
   int64_t bytes_read = 0;
 
+  std::cout<< "FileReadAt " << fd << ": " << position << ": " << nbytes << " bytes from " << std::this_thread::get_id() << std::endl;
+
   while (bytes_read < nbytes) {
     int64_t chunksize =
         std::min(static_cast<int64_t>(ARROW_MAX_IO_CHUNKSIZE), nbytes - bytes_read);
@@ -1697,6 +1699,7 @@ Result<int64_t> FileReadAt(int fd, uint8_t* buffer, int64_t position, int64_t nb
     position += ret;
     bytes_read += ret;
   }
+  std::cout<< "FINISH FileReadAt " << fd << ": " << position << ": " << nbytes << " bytes from " << std::this_thread::get_id() << std::endl;
   return bytes_read;
 }
 

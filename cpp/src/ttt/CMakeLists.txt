@@ -1,0 +1,2 @@
+add_executable(ttt test_reader.cc)
+target_link_libraries(ttt arrow_shared parquet_shared)
